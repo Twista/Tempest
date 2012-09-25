@@ -11,6 +11,5 @@ namespace Tempest\Routing;
 
 Interface IRouter {
 
-	public function dispatch();
-
+    public function dispatch();
 }

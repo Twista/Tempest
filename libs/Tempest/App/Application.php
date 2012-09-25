@@ -6,22 +6,21 @@
  * @author Michal Haták [Twista] <me@twista.cz>
  * @package Tempest
  */
-
 class Application extends \Tempest\Object {
 
-	/** @var Tempest\Routing\IRoute */
-	private $router;
+    /** @var Tempest\Routing\IRoute */
+    private $router;
 
+    public function __construct() {
+        
+    }
 
-	public function __construct(){
-	}
+    public function setRouter(IRouter $router) {
+        $this->router = $router;
+    }
 
-	public function setRouter(IRouter $router){
-		$this->router = $router;
-	}
-
-	public function run(){
-		$this->router->dispatch();
-	}
+    public function run() {
+        $this->router->dispatch();
+    }
 
 }

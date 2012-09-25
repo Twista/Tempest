@@ -54,13 +54,12 @@ class AutoLoader extends \Tempest\Object {
         }
         $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-        if(is_readable(LIB_DIR.DIRECTORY_SEPARATOR.$fileName))
-            require LIB_DIR.DIRECTORY_SEPARATOR.$fileName;
-        else{
-            if(is_readable(APP_DIR.DIRECTORY_SEPARATOR.'controllers/'.$fileName))
-                require APP_DIR.DIRECTORY_SEPARATOR.'controllers/'.$fileName;
+        if (is_readable(LIB_DIR . DIRECTORY_SEPARATOR . $fileName))
+            require LIB_DIR . DIRECTORY_SEPARATOR . $fileName;
+        else {
+            if (is_readable(APP_DIR . DIRECTORY_SEPARATOR . 'controllers/' . $fileName))
+                require APP_DIR . DIRECTORY_SEPARATOR . 'controllers/' . $fileName;
         }
-
     }
 
 }

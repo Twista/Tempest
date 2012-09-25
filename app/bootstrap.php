@@ -18,7 +18,7 @@ if($testMode){ // run test script :)
 
 $routes = array(
 	'posts' =>	'PostController:showAll',
-	'post/:id/:year' => 'PostController:showPost'
+	'post/:year/:id' => 'PostController:showPost'
 	);
 
 
