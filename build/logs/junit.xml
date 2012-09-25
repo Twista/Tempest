@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Tempest Test Suite" tests="1" assertions="1" failures="0" errors="0" time="0.004425">
+    <testsuite name="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.004425">
+      <testcase name="testHelloWorld" class="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" line="11" assertions="1" time="0.004425"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

@@ -14,4 +14,6 @@ define('LIB_DIR', WEB_DIR . '/../libs');
 define('TEMP_DIR', WEB_DIR . '/../temp');
 
 // load bootstrap file
-require APP_DIR . '/bootstrap.php';
+//if(!isset($phpUnit_started))
+if(!defined('PHPUNIT_TESTSUITE'))
+	require APP_DIR . '/bootstrap.php';
