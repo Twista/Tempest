@@ -36,28 +36,28 @@ class RouterTest extends PHPUnit_Framework_TestCase{
         $method->setAccessible(true);
 
         $r = new \Tempest\Routing\Router($this->routes);
-
-        $_GET['url'] = '';
+        $_SERVER['REQUEST_METHOD'] = 'GET';
+        $_SERVER['REQUEST_URI'] = '';
         $res = $method->invoke($r);
         $this->assertEquals('Post:showAll',$res->getTarget(),'Defaultni parametr');
 
-        $_GET['url'] = 'post/1'; // post/:id
+        $_SERVER['REQUEST_URI'] = 'post/1'; // post/:id
         $res = $method->invoke($r);
         $this->assertEquals('Post:showOne',$res->getTarget());
 
-        $_GET['url'] = 'post/12433'; // post/:id
+        $_SERVER['REQUEST_URI'] = 'post/12433'; // post/:id
         $res = $method->invoke($r);
         $this->assertEquals('Post:showOne',$res->getTarget());
 
-        $_GET['url'] = 'post/123/1/1'; // post/:year/:month/:id
+        $_SERVER['REQUEST_URI'] = 'post/123/1/1'; // post/:year/:month/:id
         $res = $method->invoke($r);
         $this->assertEquals('Post:showByDates',$res->getTarget());
 
-        $_GET['url'] = 'archiv';
+        $_SERVER['REQUEST_URI'] = 'archiv';
         $res = $method->invoke($r);
         $this->assertEquals('Archiv:short',$res->getTarget());
 
-        $_GET['url'] = 'archiv.html';
+        $_SERVER['REQUEST_URI'] = 'archiv.html';
         $res = $method->invoke($r);
         $this->assertEquals('Archiv:long',$res->getTarget());
     }

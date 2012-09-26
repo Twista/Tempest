@@ -1,6 +1,6 @@
 <?php
 echo 'testing';
-echo('<pre>'); print_r($_GET); echo('</pre>');
+
 $routes = array(
 	'posts' =>	'PostController:showAll',
 	'post/:id' => 'PostController:showPost'

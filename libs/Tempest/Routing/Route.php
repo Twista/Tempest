@@ -23,6 +23,8 @@ class Route extends \Tempest\Object {
     /** @var mixed */
     private $target;
 
+    private $methods = array('GET','POST','PUT','DELETE');
+
     /**
     * URL getter
     * @return string
@@ -39,7 +41,7 @@ class Route extends \Tempest\Object {
         if (substr($url, -1) !== '/')
             $url .= '/';
 
-        $this->url = $url;
+        $this->url = BASE_PATH.$url;
     }
 
     public function getTarget() {
@@ -54,9 +56,22 @@ class Route extends \Tempest\Object {
         return $this->params;
     }
 
-    public function setParams(array $params) {
+    public function setParams($params) {
         $this->params = $params;
     }
+
+    public function setFilters(array $filters) {
+        $this->filters = $filters;
+    }
+
+    public function setMethods($methods){
+        $this->methods = $methods;
+    }
+
+    public function getMethods(){
+        return $this->methods;
+    }
+
 
     public function getRegex() {
         return preg_replace_callback("/:(\w+)/", array(&$this, 'substituteFilter'), $this->url);

@@ -13,9 +13,10 @@ define('LIB_DIR', WEB_DIR . '/../libs');
 
 define('TEMP_DIR', WEB_DIR . '/../temp');
 
+define('BASE_PATH','/tempest/');
+
 require_once LIB_DIR . '/Tempest/loader.php';
 
-// load bootstrap file
 //if(!isset($phpUnit_started))
 if(!defined('PHPUNIT_TESTSUITE'))
 	require APP_DIR . '/bootstrap.php';
