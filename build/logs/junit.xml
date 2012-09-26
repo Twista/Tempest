@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Tempest Test Suite" tests="1" assertions="1" failures="0" errors="0" time="0.004425">
-    <testsuite name="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.004425">
-      <testcase name="testHelloWorld" class="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" line="11" assertions="1" time="0.004425"/>
+  <testsuite name="Tempest Test Suite" tests="6" assertions="15" failures="0" errors="0" time="0.010784">
+    <testsuite name="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.004878">
+      <testcase name="testHelloWorld" class="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" line="11" assertions="1" time="0.004878"/>
+    </testsuite>
+    <testsuite name="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" fullPackage="Tempest" package="Tempest" tests="2" assertions="7" failures="0" errors="0" time="0.001736">
+      <testcase name="testGettersSetters" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="18" assertions="2" time="0.000942"/>
+      <testcase name="testRegexp" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="28" assertions="5" time="0.000794"/>
+    </testsuite>
+    <testsuite name="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" fullPackage="Tempest" package="Tempest" tests="3" assertions="7" failures="0" errors="0" time="0.004170">
+      <testcase name="testTypes" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="28" assertions="0" time="0.000079"/>
+      <testcase name="testMatches" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="32" assertions="6" time="0.003149"/>
+      <testcase name="testExceptions" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="63" assertions="1" time="0.000942"/>
     </testsuite>
   </testsuite>
 </testsuites>

@@ -10,10 +10,10 @@ class PostController {
 		echo '<h1>Showing all posts!</h1>';
 	}
 
-	public function showPost($id,$year){
+	public function showPost($id){
 		echo('<pre>'); print_r(func_get_args()); echo('</pre>');
 		echo('<pre>'); print_r($id); echo('</pre>');
-		echo '<h1>Showing post with id '.$id.' - '.$year.'!</h1>';
+		echo '<h1>Showing post with id '.$id.'!</h1>';
 	}
 
 }

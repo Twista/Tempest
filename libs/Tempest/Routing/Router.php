@@ -20,7 +20,14 @@ class Router extends \Tempest\Object implements IRouter {
      */
     public function __construct($routes = array()) {
         if (!empty($routes))
-            foreach ($routes as $route => $target) {
+            $this->addArrayRoutes($routes);
+    }
+
+    public function addArrayRoutes($routes){
+        if(!is_array($routes))
+            throw new \Exception("routes must be an array");
+
+        foreach ($routes as $route => $target) {
                 $this->addRoute($route, $target);
             }
     }
@@ -45,7 +52,7 @@ class Router extends \Tempest\Object implements IRouter {
      */
     private function match() {
         if (sizeof($this->routes) == 0)
-            Throw New Exception('No routes Defined');
+            Throw New \Exception('No routes Defined');
 
         // if empty return first - default route
         if (!isset($_GET['url']))
@@ -89,7 +96,7 @@ class Router extends \Tempest\Object implements IRouter {
 
         $routeTarget = explode(':', $route->getTarget());
         if (sizeof($routeTarget) != 2)
-            throw new Exception('Wrong route target, please type Class:method');
+            throw new \Exception('Wrong route target, please type Class:method');
 
         $class = array_shift($routeTarget);
         $method = array_shift($routeTarget);

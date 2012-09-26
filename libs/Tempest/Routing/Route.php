@@ -11,23 +11,26 @@ namespace Tempest\Routing;
 
 class Route extends \Tempest\Object {
 
-    /**
-     * URL of this Route
-     * @var string
-     */
+    /** @var string */
     private $url;
-    private $params;
+
+    /** @var array */
+    private $params = array();
+
+    /** @var array */
     private $filters = array();
 
-    /**
-     * Target for this route, can be anything.
-     * @var mixed
-     */
+    /** @var mixed */
     private $target;
 
+    /**
+    * URL getter
+    * @return string
+    */
     public function getUrl() {
         return $this->url;
     }
+
 
     public function setUrl($url) {
         $url = (string) $url;
@@ -65,6 +68,5 @@ class Route extends \Tempest\Object {
         }
         return "([\w-]+)";
     }
-
 }
 

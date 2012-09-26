@@ -6,10 +6,6 @@ require_once LIB_DIR . '/Tempest/Extras/NDebugger.php';
 NDebugger::$strictMode = TRUE;
 NDebugger::enable();
 
-// tempest - start
-
-require_once LIB_DIR . '/Tempest/loader.php';
-
 if($testMode){ // run test script :)
 	require('../tests/testing.php');
 	die();
