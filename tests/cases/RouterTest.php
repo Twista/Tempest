@@ -41,7 +41,7 @@ class RouterTest extends PHPUnit_Framework_TestCase{
         $res = $method->invoke($r);
         $this->assertEquals('Post:showAll',$res->getTarget(),'Defaultni parametr');
 
-        $_SERVER['REQUEST_URI'] = 'post/1'; // post/:id
+        $_SERVER['REQUEST_URI'] = BASE_PATH.'post/1'; // post/:id
         $res = $method->invoke($r);
         $this->assertEquals('Post:showOne',$res->getTarget());
 
