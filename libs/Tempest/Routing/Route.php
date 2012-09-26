@@ -5,6 +5,7 @@
  *
  * @author Michal Haták [Twista] <me@twista.cz>
  * @package Tempest
+ * @category Tempest\Routing
  */
 
 namespace Tempest\Routing;
@@ -23,6 +24,10 @@ class Route extends \Tempest\Object {
     /** @var mixed */
     private $target;
 
+    /**
+    * array of aviable methods
+    * @var array
+    */
     private $methods = array('GET','POST','PUT','DELETE');
 
     /**
@@ -33,7 +38,10 @@ class Route extends \Tempest\Object {
         return $this->url;
     }
 
-
+    /**
+    * set route url
+    * @param string $url
+    */
     public function setUrl($url) {
         $url = (string) $url;
 
@@ -44,18 +52,34 @@ class Route extends \Tempest\Object {
         $this->url = BASE_PATH.$url;
     }
 
+    /**
+     * target getter
+     * @return mixed
+     */
     public function getTarget() {
         return $this->target;
     }
 
+    /**
+     * target setter
+     * @param mixed $target
+     */
     public function setTarget($target) {
         $this->target = $target;
     }
 
+    /**
+     * params getter
+     * @return array
+     */
     public function getParams() {
         return $this->params;
     }
 
+    /**
+     * params setter
+     * @param array $params
+     */
     public function setParams($params) {
         $this->params = $params;
     }
@@ -72,11 +96,19 @@ class Route extends \Tempest\Object {
         return $this->methods;
     }
 
-
+    /**
+     * get route regexps (with filters)
+     * @return mixed
+     */
     public function getRegex() {
         return preg_replace_callback("/:(\w+)/", array(&$this, 'substituteFilter'), $this->url);
     }
 
+    /**
+     * apply route filters
+     * @param array $matches
+     * @return mixed
+     */
     private function substituteFilter($matches) {
         if (isset($matches[1]) && isset($this->filters[$matches[1]])) {
             return $this->filters[$matches[1]];

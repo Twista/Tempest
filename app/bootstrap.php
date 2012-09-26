@@ -1,5 +1,5 @@
 <?php
-
+/* DEV ONLY ***/
 // require nette\debugger for tests :)
 require_once LIB_DIR . '/Tempest/Extras/NDebugger.php';
 
@@ -10,6 +10,8 @@ if($testMode){ // run test script :)
 	require('../tests/testing.php');
 	die();
 }
+
+/* DEV ONLY - END ***/
 
 
 $routes = array(
