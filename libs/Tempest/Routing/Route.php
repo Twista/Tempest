@@ -30,6 +30,11 @@ class Route extends \Tempest\Object {
     */
     private $methods = array('GET','POST','PUT','DELETE');
 
+    public function __construct($url,$target){
+        $this->setUrl($url);
+        $this->setTarget($target);
+    }
+
     /**
     * URL getter
     * @return string

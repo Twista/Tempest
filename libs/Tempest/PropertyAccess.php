@@ -2,6 +2,7 @@
 
 /**
  * Description of Property Access
+ * implementation of array acces as class
  *
  * @author Michal Haták [Twista] <me@twista.cz>
  * @package Tempest

@@ -104,8 +104,8 @@ class Router extends \Tempest\Object implements IRouter {
             return $route;
         }
 
-        //if fail - return first
-        return array_shift($this->routes);
+        //if fail - return index index
+        return new Route('','indexController:index');
     }
 
     /**
