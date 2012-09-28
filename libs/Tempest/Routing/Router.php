@@ -22,7 +22,10 @@ class Router extends \Tempest\Object implements IRouter {
         if (!empty($routes))
             $this->addArrayRoutes($routes);
     }
-
+    /**
+    * add routes from array
+    * @param array
+    */
     public function addArrayRoutes($routes){
         if(!is_array($routes))
             throw new \Exception("routes must be an array");

@@ -14,6 +14,11 @@ $routes = array(
 $router = new Tempest\Routing\Router($routes);
 $router->dispatch();
 
+//request
+
+$req = new Tempest\Routing\Request('Test','dva',array('id' => 3,'name' => 'tempest'));
+
+
 // di
 
 $di = new Tempest\DI();

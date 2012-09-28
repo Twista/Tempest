@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of IoC
+ * Description of IoC Container
  *
  * @author Michal Haták [Twista] <me@twista.cz>
  * @package Tempest
@@ -16,12 +16,6 @@ class DI {
      * @var array
      */
     private $registry = array();
-
-    /**
-    * created services
-    * @var array
-    */
-    private $services = array();
 
     /**
      * add new service
@@ -47,18 +41,24 @@ class DI {
         if (!isset($this->registry[$name]))
             throw new Exception('Service with ' . $name . ' isn\'t defined');
 
-        if(is_object($this->registry[$name]['class']))
-            return $this->registry[$name]['class'];
+        $class_name = $this->registry[$name]['class'];
+
+        if(is_object($class_name))
+            return $class_name;
+
+        if(!class_exists($class_name))
+            throw new Exception("Class {$class_name} doesnt exists.");
+
 
         // creating an instance of the class
         if(count($this->registry[$name]['params']) == 0) {
-           $obj = new $this->registry[$name]['class'];
+           $obj = new $class_name;
         } else {
             $params = $this->registry[$name]['params'];
             if(!is_array($params)) {
                 $params = array($params);
             }
-            $reflection = new ReflectionClass($this->registry[$name]['class']);
+            $reflection = new ReflectionClass($class_name);
             $obj = $reflection->newInstanceArgs($params);
         }
 
