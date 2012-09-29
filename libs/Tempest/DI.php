@@ -5,6 +5,7 @@
  *
  * @author Michal Haták [Twista] <me@twista.cz>
  * @package Tempest
+ * @todo magic call method : getValue == get('value')
  */
 
 namespace Tempest;
@@ -28,6 +29,7 @@ class DI {
         $this->registry[$name] = array(
             'class' => $class,
             'params' => $args,
+            'instance' => null,
             );
     }
 
@@ -37,7 +39,7 @@ class DI {
      * @return object
      * @throws Exception
      */
-    public function get($name) {
+    public function get($name,$args = array()) {
         if (!isset($this->registry[$name]))
             throw new Exception('Service with ' . $name . ' isn\'t defined');
 
@@ -49,9 +51,11 @@ class DI {
         if(!class_exists($class_name))
             throw new Exception("Class {$class_name} doesnt exists.");
 
+        // merge class params
+        $this->registry[$name]['params'] = array_merge($this->registry[$name]['params'],$args);
 
         // creating an instance of the class
-        if(count($this->registry[$name]['params']) == 0) {
+        if(!hasClassParams($this->registry[$name]['params'])) {
            $obj = new $class_name;
         } else {
             $params = $this->registry[$name]['params'];
@@ -62,7 +66,42 @@ class DI {
             $obj = $reflection->newInstanceArgs($params);
         }
 
-
+        $this->registry[$name]['instance'] = $obj;
         return $obj;
+    }
+
+    /**
+    * return last instanced class by name
+    * singleton workaround
+    * @param string $name
+    * @throws Exception
+    * @return Object
+    */
+    public function getShared($name){
+        if(!isClassRegistred($name))
+            throw new Exception('Service with ' . $name . ' isn\'t defined');
+
+        if(!is_null($this->registry[$name]['instance']))
+            return $this->registry[$name]['instance'];
+
+        return $this->get($name);
+    }
+
+    /**
+    * check if class has any params defined
+    * @param string $class_name
+    * @return bool
+    */
+    private function hasClassParams($class_name){
+        return (bool)count($class_name['params']);
+    }
+
+    /**
+    * check if class is defined
+    * @param string $name
+    * @return bool
+    */
+    private function isClassRegistred($name){
+        return isset($this->registry[$name]);
     }
 }

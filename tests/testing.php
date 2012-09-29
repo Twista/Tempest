@@ -8,15 +8,17 @@ $routes = array(
 	'post/:id' => 'PostController:showPost'
 	);
 
-/** @deprecated */
-//$router = new Tempest\Routing\SimpleRouter($routes);
-
 $router = new Tempest\Routing\Router($routes);
-$router->dispatch();
+$router->routes[] = new Route();
+
+$dispatcher = new Tempest\Routing\Dispatcher($router);
+
+//$router->dispatch();
 
 //request
 
-$req = new Tempest\Routing\Request('Test','dva',array('id' => 3,'name' => 'tempest'));
+$req = new Tempest\Routing\Request();
+echo('<pre>'); print_r($req); echo('</pre>');
 
 
 // di

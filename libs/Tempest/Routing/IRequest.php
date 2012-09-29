@@ -10,6 +10,6 @@
 namespace Tempest\Routing;
 
 Interface IRequest {
-    public function getClass();
-    public function getAction();
+    public function getUri();
+    public function getMethod();
 }

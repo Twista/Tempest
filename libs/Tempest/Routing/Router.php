@@ -5,6 +5,7 @@
  *
  * @author Michal Haták [Twista] <me@twista.cz>
  * @package Tempest
+ * @category Tempest\Routing
  */
 
 namespace Tempest\Routing;
@@ -41,10 +42,7 @@ class Router extends \Tempest\Object implements IRouter {
      * @param string $target write as Class:action
      */
     public function addRoute($routeURL, $target, $args = null) {
-        $route = new Route();
-
-        $route->setUrl($routeURL);
-        $route->setTarget($target);
+        $route = new Route($routeURL,$target);
 
         if(isset($args['methods'])) {
             $methods = explode(',', $args['methods']);
@@ -62,28 +60,17 @@ class Router extends \Tempest\Object implements IRouter {
      * Match current request against routes
      * @return string
      */
-    private function match() {
-        if (sizeof($this->routes) == 0)
+    private function match(Request $request) {
+        if (!$this->hasRoutes())
             Throw New \Exception('No routes Defined');
-
-        $requestMethod = (isset($_POST['_method']) && ($_method = strtoupper($_POST['_method'])) && in_array($_method,array('PUT','DELETE'))) ? $_method : $_SERVER['REQUEST_METHOD'];
-        $requestUrl = $_SERVER['REQUEST_URI'];
-
-        // strip GET variables from URL
-        if(($pos = strpos($requestUrl, '?')) !== false) {
-            $requestUrl =  substr($requestUrl, 0, $pos);
-        }
-
-        if(empty($requestUrl))
-            return array_shift($this->routes);
 
         foreach ($this->routes as $route) {
 
             // compare server request method with route's allowed http methods
-            if(!in_array($requestMethod, $route->getMethods())) continue;
+            if(!in_array($request->method, $route->getMethods())) continue;
 
             // check if request url matches route regex. if not, return false.
-            if (!preg_match("@^" . $route->getRegex() . "*$@i", $requestUrl, $matches))
+            if (!preg_match("@^" . $route->getRegex() . "*$@i", $request->uri, $matches))
                 continue;
 
             if (preg_match_all("/:([\w-]+)/", $route->getUrl(), $argument_keys)) {
@@ -104,25 +91,16 @@ class Router extends \Tempest\Object implements IRouter {
             return $route;
         }
 
-        //if fail - return index index
-        return new Route('','indexController:index');
+        throw new Exception("Route Not Found", 404);
+
     }
 
     /**
-     * Dispatch current request
-     */
-    public function dispatch() {
-        $route = $this->match();
-
-        $routeTarget = explode(':', $route->getTarget());
-        if (sizeof($routeTarget) != 2)
-            throw new \Exception('Wrong route target, please type Class:method');
-
-        $class = array_shift($routeTarget);
-        $method = array_shift($routeTarget);
-        $obj = new $class();
-        $params = is_null($route->getParams()) ? array() : array_values($route->getParams());
-        return call_user_func_array(array($obj, $method), $params);
+    * check if some route is defined
+    * @return bool
+    */
+    private function hasRoutes(){
+        return (bool)count($this->routes);
     }
 
 }
