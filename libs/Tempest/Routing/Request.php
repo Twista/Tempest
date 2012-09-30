@@ -30,12 +30,12 @@ class Request extends \Tempest\PropertyAccess {
 
 		$this->method = $this->getCurrentMethod($method);
 
-        $this->uri = (is_null($uri)) ? $_SERVER['REQUEST_URI'] : $uri;
+		$this->uri = (is_null($uri)) ? $_SERVER['REQUEST_URI'] : $uri;
 
-        // strip GET variables from URL
-        if(($pos = strpos($this->uri, '?')) !== false) {
-            $this->uri =  substr($this->uri, 0, $pos);
-        }
+		// strip GET variables from URL
+		if(($pos = strpos($this->uri, '?')) !== false) {
+			$this->uri =  substr($this->uri, 0, $pos);
+		}
 	}
 
 	/**
