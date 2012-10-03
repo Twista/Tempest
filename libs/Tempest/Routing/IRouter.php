@@ -11,5 +11,5 @@ namespace Tempest\Routing;
 
 Interface IRouter {
 
-    public function match();
+    public function match(Request $request);
 }

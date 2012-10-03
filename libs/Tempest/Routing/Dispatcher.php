@@ -36,7 +36,7 @@ class Dispatcher extends \Tempest\Object {
         $class = array_shift($routeTarget);
         $method = array_shift($routeTarget);
         $obj = new $class();
-        $params = is_null($route->getParams()) ? array() : array_values($route->getParams());
+        $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
         return call_user_func_array(array($obj, $method), $params);
     }
 }

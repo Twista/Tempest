@@ -60,7 +60,7 @@ class Router extends \Tempest\Object implements IRouter {
      * Match current request against routes
      * @return string
      */
-    private function match(Request $request) {
+    public function match(Request $request) {
         if (!$this->hasRoutes())
             Throw New \Exception('No routes Defined');
 
@@ -91,7 +91,7 @@ class Router extends \Tempest\Object implements IRouter {
             return $route;
         }
 
-        throw new Exception("Route Not Found", 404);
+        throw new \Exception("Route Not Found", 404);
 
     }
 
