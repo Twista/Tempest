@@ -4,10 +4,10 @@ echo 'test - mode<br>';
 // routes
 
 $routes = array(
-	':controller/:action' => '[controller]:[action]',
+	'[controller]/[action]' => '[controller]:[action]',
 	'posts' =>	'PostController:showAll',
 	'/' =>	'PostController:showAll',
-	'post/:id' => 'PostController:showPost'
+	'post/[id]' => 'PostController:showPost'
 	);
 
 $router = new Tempest\Routing\Router($routes);

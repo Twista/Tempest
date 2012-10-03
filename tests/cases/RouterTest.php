@@ -17,8 +17,9 @@ class RouterTest extends PHPUnit_Framework_TestCase{
     	// setup default routes for testCase
         $routes = array(
 			'posts'                 => 'Post:showAll',
-			'post/:id'              => 'Post:showOne',
-			'post/:year/:month/:id' => 'Post:showByDates',
+			'post/[id]'              => 'Post:showOne',
+            'post/[year]/[month]/[id]' => 'Post:showByDates',
+			'[controller]/[action]' => '[controller]:[action]',
 			'archiv'                => 'Archiv:short',
 			'archiv.html'           => 'Archiv:long',
 			);

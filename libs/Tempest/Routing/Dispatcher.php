@@ -23,18 +23,33 @@ class Dispatcher extends \Tempest\Object {
 		$this->route = $route;
 	}
 
+    /**
+    * process parameters to target (class:action)
+    * @param string $target
+    * @param array $params
+    * @return string
+    */
+    private function processTarget($target,$params){
+        $targetParams = array();
+        foreach ($params as $key => $value) {
+            $targetParams['['.$key.']'] = $value;
+        }
+
+        return strtr($target,$targetParams);
+    }
+
 	/**
      * Dispatch current request
      * @return mixed
      */
     public function dispatch() {
 
-        $routeTarget = explode(':', $this->route->getTarget());
-        if (sizeof($routeTarget) != 2)
+        $targetRoute = explode(':',$this->processTarget($this->route->getTarget(),$this->route->getParams));
+        if (sizeof($targetRoute) != 2)
             throw new \Exception('Wrong route target, please type Class:method');
 
-        $class = array_shift($routeTarget);
-        $method = array_shift($routeTarget);
+        $class = array_shift($targetRoute);
+        $method = array_shift($targetRoute);
         $obj = new $class();
         $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
         return call_user_func_array(array($obj, $method), $params);

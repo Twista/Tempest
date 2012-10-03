@@ -45,6 +45,7 @@ class Route extends \Tempest\Object {
 
     /**
     * set route url
+    * @todo remove BASE_PATH
     * @param string $url
     */
     public function setUrl($url) {
@@ -106,7 +107,7 @@ class Route extends \Tempest\Object {
      * @return mixed
      */
     public function getRegex() {
-        return preg_replace_callback("/:(\w+)/", array(&$this, 'substituteFilter'), $this->url);
+        return preg_replace_callback("/\[(\w+)\]/", array(&$this, 'substituteFilter'), $this->url);
     }
 
     /**

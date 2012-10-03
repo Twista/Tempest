@@ -73,7 +73,7 @@ class Router extends \Tempest\Object implements IRouter {
             if (!preg_match("@^" . $route->getRegex() . "*$@i", $request->uri, $matches))
                 continue;
 
-            if (preg_match_all("/:([\w-]+)/", $route->getUrl(), $argument_keys)) {
+            if (preg_match_all("/\[([\w-]+)\]/", $route->getUrl(), $argument_keys)) {
 
                 // grab array with matches
                 $argument_keys = $argument_keys[1];
@@ -87,6 +87,9 @@ class Router extends \Tempest\Object implements IRouter {
 
             if (isset($params))
                 $route->setParams($params);
+
+            echo('<pre>'); print_r($route->getTarget()); echo('</pre>');
+            echo('<pre>'); print_r($params); echo('</pre>');
 
             return $route;
         }

@@ -1,23 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Tempest Test Suite" tests="8" assertions="22" failures="0" errors="0" time="0.013950">
-    <testsuite name="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" tests="1" assertions="3" failures="0" errors="0" time="0.001554">
-      <testcase name="testGetSetServices" class="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" line="11" assertions="3" time="0.001554"/>
+  <testsuite name="Tempest Test Suite" tests="8" assertions="4" failures="0" errors="5" time="0.011539">
+    <testsuite name="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" tests="1" assertions="2" failures="0" errors="1" time="0.001776">
+      <testcase name="testGetSetServices" class="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" line="11" assertions="2" time="0.001776">
+        <error type="PHPUnit_Framework_Error_Notice">DITest::testGetSetServices
+Undefined index: params
+
+D:\Web\wwwmy\Tempest\libs\Tempest\DI.php:96
+D:\Web\wwwmy\Tempest\libs\Tempest\DI.php:58
+D:\Web\wwwmy\Tempest\tests\cases\DITest.php:23
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:967
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:825
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestResult.php:649
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:770
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:776
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:746
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:706
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\TestRunner.php:325
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:177
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:130
+C:\Program Files (x86)\PHP54\phpunit:46
+</error>
+      </testcase>
     </testsuite>
-    <testsuite name="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.005292">
-      <testcase name="testHelloWorld" class="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" line="10" assertions="1" time="0.005292"/>
+    <testsuite name="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.005120">
+      <testcase name="testHelloWorld" class="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" line="10" assertions="1" time="0.005120"/>
     </testsuite>
-    <testsuite name="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" tests="1" assertions="4" failures="0" errors="0" time="0.001290">
-      <testcase name="testSimple" class="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" line="11" assertions="4" time="0.001290"/>
+    <testsuite name="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" tests="1" assertions="0" failures="0" errors="1" time="0.001367">
+      <testcase name="testSimple" class="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" line="11" assertions="0" time="0.001367">
+        <error type="PHPUnit_Framework_Error_Notice">RequestTest::testSimple
+Undefined property: Tempest\Routing\Request::$class
+
+D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php:12
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:967
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:825
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestResult.php:649
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:770
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:776
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:746
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:706
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\TestRunner.php:325
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:177
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:130
+C:\Program Files (x86)\PHP54\phpunit:46
+</error>
+      </testcase>
     </testsuite>
-    <testsuite name="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" fullPackage="Tempest" package="Tempest" tests="2" assertions="7" failures="0" errors="0" time="0.001645">
-      <testcase name="testGettersSetters" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="18" assertions="2" time="0.000848"/>
-      <testcase name="testRegexp" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="28" assertions="5" time="0.000797"/>
+    <testsuite name="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" fullPackage="Tempest" package="Tempest" tests="2" assertions="0" failures="0" errors="2" time="0.000803">
+      <testcase name="testGettersSetters" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="18" assertions="0" time="0.000711">
+        <error type="PHPUnit_Framework_Error_Warning">RouteTest::testGettersSetters
+Missing argument 1 for Tempest\Routing\Route::__construct(), called in D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php on line 15 and defined
+
+D:\Web\wwwmy\Tempest\libs\Tempest\Routing\Route.php:33
+D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php:15
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:822
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestResult.php:649
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:770
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:776
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:746
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:706
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\TestRunner.php:325
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:177
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:130
+C:\Program Files (x86)\PHP54\phpunit:46
+</error>
+      </testcase>
+      <testcase name="testRegexp" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="28" assertions="0" time="0.000092">
+        <error type="PHPUnit_Framework_Error_Warning">RouteTest::testRegexp
+Missing argument 1 for Tempest\Routing\Route::__construct(), called in D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php on line 15 and defined
+
+D:\Web\wwwmy\Tempest\libs\Tempest\Routing\Route.php:33
+D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php:15
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:822
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestResult.php:649
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:770
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:776
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:746
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:706
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\TestRunner.php:325
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:177
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:130
+C:\Program Files (x86)\PHP54\phpunit:46
+</error>
+      </testcase>
     </testsuite>
-    <testsuite name="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" fullPackage="Tempest" package="Tempest" tests="3" assertions="7" failures="0" errors="0" time="0.004169">
-      <testcase name="testTypes" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="28" assertions="0" time="0.000077"/>
-      <testcase name="testMatches" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="32" assertions="6" time="0.003116"/>
-      <testcase name="testExceptions" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="68" assertions="1" time="0.000976"/>
+    <testsuite name="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" fullPackage="Tempest" package="Tempest" tests="3" assertions="1" failures="0" errors="1" time="0.002473">
+      <testcase name="testTypes" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="29" assertions="0" time="0.000066"/>
+      <testcase name="testMatches" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="33" assertions="0" time="0.001483">
+        <error type="PHPUnit_Framework_Error">RouterTest::testMatches
+Argument 1 passed to Tempest\Routing\Router::match() must be an instance of Tempest\Routing\Request, none given
+
+D:\Web\wwwmy\Tempest\libs\Tempest\Routing\Router.php:63
+D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php:42
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:967
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:825
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestResult.php:649
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestCase.php:770
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:776
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:746
+C:\Program Files (x86)\PHP54\pear\PHPUnit\Framework\TestSuite.php:706
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\TestRunner.php:325
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:177
+C:\Program Files (x86)\PHP54\pear\PHPUnit\TextUI\Command.php:130
+C:\Program Files (x86)\PHP54\phpunit:46
+</error>
+      </testcase>
+      <testcase name="testExceptions" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="69" assertions="1" time="0.000924"/>
     </testsuite>
   </testsuite>
 </testsuites>
