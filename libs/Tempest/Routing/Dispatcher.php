@@ -15,6 +15,9 @@ class Dispatcher extends \Tempest\Object {
 	/** @var Route */
 	private $route;
 
+    /** @var \Tempest\DI */
+    private $di;
+
 	/**
 	* constructor
 	* @param Route $route
@@ -22,6 +25,16 @@ class Dispatcher extends \Tempest\Object {
 	public function __construct(Route $route){
 		$this->route = $route;
 	}
+
+    /**
+     * set Dependenci container to inject via presenter factory
+     * @param \Tempest\DI $di
+     * @return Dispatcher
+     */
+    public function setInjectedDependencies(\Tempest\DI $di){
+        $this->di = $di;
+        return $this;
+    }
 
     /**
     * process parameters to target (class:action)
@@ -38,12 +51,12 @@ class Dispatcher extends \Tempest\Object {
         return strtr($target,$targetParams);
     }
 
-	/**
-     * Dispatch current request
-     * @return mixed
+    /**
+     * basic presenter factory
+     * @param string $target
+     * @return object
      */
-    public function dispatch() {
-        echo "used route - " . $this->route->getUrl();
+    private function presenterFactory(){
         $targetRoute = explode(':',$this->processTarget($this->route->getTarget(),$this->route->getParams));
         if (sizeof($targetRoute) != 2)
             throw new \Exception('Wrong route target, please type Class:method');
@@ -51,7 +64,21 @@ class Dispatcher extends \Tempest\Object {
         $class = array_shift($targetRoute);
         $method = array_shift($targetRoute);
         $obj = new $class();
+        if($obj instanceof \Tempest\MVC\Presenter)
+               $obj->injectDI($this->di);
         $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
         return call_user_func_array(array($obj, $method), $params);
+
+    }
+
+	/**
+     * Dispatch current request
+     * @return mixed
+     */
+    public function dispatch() {
+        if(is_object($this->route->getTarget()))
+            return $this->route->getTarget();
+
+        return $this->presenterFactory();
     }
 }

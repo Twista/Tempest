@@ -4,23 +4,20 @@ echo 'test - mode<br>';
 // routes
 
 $routes = array(
-	'[controller]/[action]' => '[controller]:[action]',
-	'posts' =>	'PostController:showAll',
-	'/' =>	'PostController:showAll',
-	'post/[id]' => 'PostController:showPost'
+	'[presenter]/[action]' => '[presenter]:[action]',
+	'posts' =>	'PostPresenter:showAll',
+	'/' =>	'PostPresenter:showAll',
+	'post/[id]' => 'PostPresenter:showPost'
 	);
 
 $router = new Tempest\Routing\Router($routes);
-$router->addRoute('a/b','PostController:showAll');
+$router->addRoute('a/b','PostPresenter:showAll');
 
 $dispatcher = new Tempest\Routing\Dispatcher($router->match(new Tempest\Routing\Request()));
 
 $dispatcher->dispatch();
 
-//request
 
-$req = new Tempest\Routing\Request();
-echo('<pre>'); print_r($req); echo('</pre>');
 
 
 // di

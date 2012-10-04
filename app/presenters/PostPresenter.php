@@ -1,6 +1,6 @@
 <?php
 
-class PostController {
+class PostPresenter extends \Tempest\MVC\Presenter {
 
 	public function __contruct(){
 

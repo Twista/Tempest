@@ -17,5 +17,5 @@ require_once '/Loaders/Autoloader.php';
 Tempest\Loaders\AutoLoader::getInstance()->register()
 		// @todo refactor :(
         ->addDir(APP_DIR)
-        ->addDir(APP_DIR.'/controllers')
+        ->addDir(APP_DIR.'/presenters')
         ->addDir(APP_DIR.'/models');

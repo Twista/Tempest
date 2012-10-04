@@ -1,6 +1,6 @@
 <?php
 
-$testMode = true;
+$testMode = false;
 
 // public directory
 define('WEB_DIR', __DIR__);

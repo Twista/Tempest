@@ -13,18 +13,21 @@ if($testMode){ // run test script :)
 
 /* DEV ONLY - END ***/
 
-
 $routes = array(
-	'posts' =>	'PostController:showAll',
-	'post/:year/:id' => 'PostController:showPost'
+	'[presenter]/[action]' => '[presenter]:[action]',
+	'posts' =>	'PostPresenter:showAll',
+	'/' =>	'PostPresenter:showAll',
+	'post/[id]' => 'PostPresenter:showPost'
 	);
 
+$di = new Tempest\DI();
+
+$di->set('router',function() use ($routes){
+	return new Tempest\Routing\Router($routes);
+});
 
 // create instance of Tempest\Application
-$app = new Tempest\App\Application();
-
-// set Router w/ routes
-$app->setRouter(new Tempest\Routing\Router($routes));
+$app = new Tempest\App\Application($di);
 
 // run run run!
 $app->run();

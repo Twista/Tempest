@@ -12,19 +12,18 @@ namespace Tempest\App;
 
 class Application extends \Tempest\Object {
 
-    /** @var Tempest\Routing\IRoute */
-    private $router;
+    /** @var Tempest\DI */
+    private $di;
 
-    public function __construct() {
-
-    }
-
-    public function setRouter(IRouter $router) {
-        $this->router = $router;
+    public function __construct(\Tempest\DI $di) {
+        $this->di = $di;
     }
 
     public function run() {
-        $this->router->dispatch();
+        $router = $this->di->get('router');
+        $dispatcher = new \Tempest\Routing\Dispatcher($router()->match(new \Tempest\Routing\Request()));
+        $dispatcher->setInjectedDependencies($this->di)
+            ->dispatch();
     }
 
 }
