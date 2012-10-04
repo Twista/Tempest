@@ -18,14 +18,14 @@ abstract class Presenter {
 	/** @var string */
 	protected $template_file;
 
-	/** @var \Tempest\DI */
+	/** @var \Tempest\DI\Container */
 	protected $di;
 
 	/**
 	 * inject DI Container
 	 * @param \Tempest\DI $di
 	 */
-	public function injectDI(\Tempest\DI $di){
+	public function injectDI(\Tempest\DI\Container $di){
 		$this->di = $di;
 		echo '<h1>DI was injected</h1>';
 	}

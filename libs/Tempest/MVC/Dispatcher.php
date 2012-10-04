@@ -5,24 +5,24 @@
  *
  * @author Michal Haták [Twista] <me@twista.cz>
  * @package Tempest
- * @category Tempest\Routing
+ * @category Tempest\MVC
  */
 
-namespace Tempest\Routing;
+namespace Tempest\MVC;
 
 class Dispatcher extends \Tempest\Object {
 
-	/** @var Route */
+	/** @var \Tempest\Routing\Route */
 	private $route;
 
-    /** @var \Tempest\DI */
+    /** @var \Tempest\DI\Container */
     private $di;
 
 	/**
 	* constructor
 	* @param Route $route
 	*/
-	public function __construct(Route $route){
+	public function __construct(\Tempest\Routing\Route $route){
 		$this->route = $route;
 	}
 
@@ -31,7 +31,7 @@ class Dispatcher extends \Tempest\Object {
      * @param \Tempest\DI $di
      * @return Dispatcher
      */
-    public function setInjectedDependencies(\Tempest\DI $di){
+    public function setInjectedDependencies(\Tempest\DI\Container $di){
         $this->di = $di;
         return $this;
     }

@@ -20,7 +20,7 @@ $routes = array(
 	'[presenter]/[action]' => '[presenter]:[action]',
 	);
 
-$di = new Tempest\DI();
+$di = new Tempest\DI\Container();
 
 $di->set('router',function() use ($routes){
 	return new Tempest\Routing\Router($routes);

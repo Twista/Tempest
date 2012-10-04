@@ -8,9 +8,9 @@
  * @todo magic call method : getValue == get('value')
  */
 
-namespace Tempest;
+namespace Tempest\DI;
 
-class DI {
+class Container {
 
     /**
      * services registry
