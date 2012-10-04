@@ -13,6 +13,15 @@ if($testMode){ // run test script :)
 
 /* DEV ONLY - END ***/
 
+// register autoloader
+$loader = \Tempest\Loaders\Autoloader::getInstance();
+$loader->addDirs(array(
+	APP_DIR,
+	APP_DIR.'/presenters',
+	APP_DIR.'/models'
+	))->register();
+
+
 $routes = array(
 	'posts' =>	'Post:showAll',
 	'/' =>	'Post:showAll',

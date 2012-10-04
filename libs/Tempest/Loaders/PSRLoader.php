@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of AutoLoader
+ * Description of PSRLoader
  * autoload classes from Tempest
  *
  * @author Michal Haták [Twista] <me@twista.cz>
@@ -11,30 +11,14 @@
 
 namespace Tempest\Loaders;
 
-class AutoLoader extends \Tempest\Object {
+class PSRLoader extends \Tempest\Object {
 
-    /**
-     * aviable autoload pathes forautoloading
-     * @var array
-     */
-    private $pathes;
-
-    /** @var Tempest\Loaders\Autoloader */
+    /** @var Tempest\Loaders\PSRloader */
     private static $instance = NULL;
 
     /**
-     * add directory for autoload - fluent
-     * @param string $path
-     * @return \Tempest\Loaders\AutoLoader
-     */
-    public function addDirs(array $pathes = array()) {
-        $this->pathes = $pathes;
-        return $this;
-    }
-
-    /**
      * Returns singleton instance with lazy instantiation.
-     * @return Tempest\Loaders\Autoloader
+     * @return Tempest\Loaders\PSRloader
      */
     public static function getInstance() {
         if (self::$instance === NULL) {
@@ -72,12 +56,9 @@ class AutoLoader extends \Tempest\Object {
         }
         $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-        // load from user defined folders
-        if (!empty($this->pathes))
-            foreach ($this->pathes as $key => $path) {
-                if (is_readable($path . DIRECTORY_SEPARATOR . $fileName))
-                    require $path . DIRECTORY_SEPARATOR . $fileName;
-            }
+        // psr standartized
+        if (is_readable(LIB_DIR . DIRECTORY_SEPARATOR . $fileName))
+            require LIB_DIR . DIRECTORY_SEPARATOR . $fileName;
     }
 
 }
