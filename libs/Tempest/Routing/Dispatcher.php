@@ -55,6 +55,7 @@ class Dispatcher extends \Tempest\Object {
      * basic presenter factory
      * @param string $target
      * @return object
+     * @todo refact - too long
      */
     private function presenterFactory(){
         $targetRoute = explode(':',$this->processTarget($this->route->getTarget(),$this->route->getParams));
@@ -63,16 +64,32 @@ class Dispatcher extends \Tempest\Object {
 
         $class = array_shift($targetRoute);
         $method = array_shift($targetRoute);
-        $obj = new $class();
+
+        // add default postfixes
+        $class_name = $class.'Presenter';
+        $method_name = $method.'Action';
+
+
+        if(!class_exists($class_name))
+            throw new \Exception("Class {$class_name}Presenter doesn't exists");
+
+        $obj = new $class_name();
         if($obj instanceof \Tempest\MVC\Presenter){
             $obj->injectDI($this->di);
+            $obj->initTemplate($class.DIRECTORY_SEPARATOR.$method.'.pht');
         }
 
         if(method_exists($obj, 'beforeRender'))
             $obj->beforeRender();
 
         $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
-        call_user_func_array(array($obj, $method), $params);
+        if(!method_exists($obj, $method_name))
+            throw new \Exception("Method {$class_name}::{$method_name} doesn't exists");
+
+        call_user_func_array(array($obj, $method_name), $params);
+
+        if(method_exists($obj, 'renderTemplate'))
+            $obj->renderTemplate();
 
         if(method_exists($obj, 'afterRender'))
             $obj->afterRender();

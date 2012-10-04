@@ -15,7 +15,7 @@ class AutoLoader extends \Tempest\Object {
 
     /**
      * aviable autoload pathes forautoloading
-     * @var array 
+     * @var array
      */
     private $pathes;
 
@@ -79,12 +79,9 @@ class AutoLoader extends \Tempest\Object {
         // load from user defined folders
         else if (!empty($this->pathes))
             foreach ($this->pathes as $key => $path) {
-                echo '- ' . $path;
                 if (is_readable($path . DIRECTORY_SEPARATOR . $fileName))
                     require $path . DIRECTORY_SEPARATOR . $fileName;
             }
     }
 
 }
-
-?>

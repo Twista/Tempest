@@ -14,10 +14,10 @@ if($testMode){ // run test script :)
 /* DEV ONLY - END ***/
 
 $routes = array(
+	'posts' =>	'Post:showAll',
+	'/' =>	'Post:showAll',
+	'post/[id]' => 'Post:showPost',
 	'[presenter]/[action]' => '[presenter]:[action]',
-	'posts' =>	'PostPresenter:showAll',
-	'/' =>	'PostPresenter:showAll',
-	'post/[id]' => 'PostPresenter:showPost'
 	);
 
 $di = new Tempest\DI();

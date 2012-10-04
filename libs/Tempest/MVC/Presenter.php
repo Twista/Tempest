@@ -27,4 +27,13 @@ abstract class Presenter {
 		echo '<h1>DI was injected</h1>';
 	}
 
+	public function initTemplate($template){
+		$this->template = new \Tempest\Templating\Template(APP_DIR.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template);
+	}
+
+	public function renderTemplate(){
+		echo '<h3>render!</h3>';
+		$this->template->render();
+	}
+
 }

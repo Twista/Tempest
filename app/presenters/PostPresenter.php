@@ -14,11 +14,11 @@ class PostPresenter extends \Tempest\MVC\Presenter {
 		echo '<h2>afterRender called</h2>';
 	}
 
-	public function showAll(){
+	public function showAllAction(){
 		echo '<h1>Showing all posts!</h1>';
 	}
 
-	public function showPost($id){
+	public function showPostAction($id){
 		echo('<pre>'); print_r(func_get_args()); echo('</pre>');
 		echo('<pre>'); print_r($id); echo('</pre>');
 		echo '<h1>Showing post with id '.$id.'!</h1>';
