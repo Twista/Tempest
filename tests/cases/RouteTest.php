@@ -12,7 +12,7 @@ class RouteTest extends PHPUnit_Framework_TestCase {
 	public $route;
 
     public function setUp(){
-        $this->route = new \Tempest\Routing\Route();
+        $this->route = new \Tempest\Routing\Route('','');
     }
 
     public function testGettersSetters(){
@@ -27,7 +27,7 @@ class RouteTest extends PHPUnit_Framework_TestCase {
 
     public function testRegexp(){
     	$r = $this->route;
-    	$r->setUrl('post/show/:id');
+    	$r->setUrl('post/show/[id]');
     	$r->setTarget('MyTarget:fake');
 
     	$this->assertEquals(1,preg_match("@^" . $r->getRegex() . "*$@i", BASE_PATH.'post/show/1'),'test regexpu cislo 1');

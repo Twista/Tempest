@@ -55,7 +55,7 @@ class DI {
         $this->registry[$name]['params'] = array_merge($this->registry[$name]['params'],$args);
 
         // creating an instance of the class
-        if(!$this->hasClassParams($this->registry[$name]['params'])) {
+        if(!$this->hasClassParams($this->registry[$name])) {
            $obj = new $class_name;
         } else {
             $params = $this->registry[$name]['params'];

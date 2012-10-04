@@ -31,36 +31,31 @@ class RouterTest extends PHPUnit_Framework_TestCase{
     }
 
     public function testMatches(){
-    	$reflection_class = new ReflectionClass('\Tempest\Routing\Router');
 
-        $method = $reflection_class->getMethod("match");
-        $method->setAccessible(true);
-
-        $r = new \Tempest\Routing\Router($this->routes);
         $_SERVER['REQUEST_METHOD'] = 'GET';
         $_SERVER['REQUEST_URI'] = '';
-        $res = $method->invoke($r);
+
+        $r = new \Tempest\Routing\Router($this->routes);
+
+        $res = $r->match(new \Tempest\Routing\Request(BASE_PATH.'posts','GET'));
+
         $this->assertEquals('Post:showAll',$res->getTarget(),'Defaultni parametr');
 
-        $_SERVER['REQUEST_URI'] = BASE_PATH.'post/1'; // post/:id
-        $res = $method->invoke($r);
+        $res = $r->match(new \Tempest\Routing\Request(BASE_PATH.'post/1','GET'));
         $this->assertEquals('Post:showOne',$res->getTarget());
 
-        $_SERVER['REQUEST_URI'] = 'post/12433'; // post/:id
-        $res = $method->invoke($r);
+        $res = $r->match(new \Tempest\Routing\Request(BASE_PATH.'post/12433','GET'));
         $this->assertEquals('Post:showOne',$res->getTarget());
 
-        $_SERVER['REQUEST_URI'] = 'post/123/1/1'; // post/:year/:month/:id
-        $res = $method->invoke($r);
+        $res = $r->match(new \Tempest\Routing\Request(BASE_PATH.'post/123/1/1','GET'));
         $this->assertEquals('Post:showByDates',$res->getTarget());
 
-        $_SERVER['REQUEST_URI'] = 'archiv';
-        $res = $method->invoke($r);
+        $res = $r->match(new \Tempest\Routing\Request(BASE_PATH.'archiv','GET'));
         $this->assertEquals('Archiv:short',$res->getTarget());
 
-        $_SERVER['REQUEST_URI'] = 'archiv.html';
-        $res = $method->invoke($r);
+        $res = $r->match(new \Tempest\Routing\Request(BASE_PATH.'archiv.html','GET'));
         $this->assertEquals('Archiv:long',$res->getTarget());
+
     }
 
     /**

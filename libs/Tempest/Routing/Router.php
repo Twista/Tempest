@@ -88,9 +88,6 @@ class Router extends \Tempest\Object implements IRouter {
             if (isset($params))
                 $route->setParams($params);
 
-            echo('<pre>'); print_r($route->getTarget()); echo('</pre>');
-            echo('<pre>'); print_r($params); echo('</pre>');
-
             return $route;
         }
 

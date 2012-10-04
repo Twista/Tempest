@@ -43,7 +43,7 @@ class Dispatcher extends \Tempest\Object {
      * @return mixed
      */
     public function dispatch() {
-
+        echo "used route - " . $this->route->getUrl();
         $targetRoute = explode(':',$this->processTarget($this->route->getTarget(),$this->route->getParams));
         if (sizeof($targetRoute) != 2)
             throw new \Exception('Wrong route target, please type Class:method');

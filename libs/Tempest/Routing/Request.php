@@ -41,13 +41,20 @@ class Request extends \Tempest\PropertyAccess {
 	/**
 	* get method of current request
 	* @param mixed $method
+	* @throws \Exception
 	* @return string
 	*/
 	private function getCurrentMethod($method){
 		if(!is_null($method))
 			return $method;
 
-		return (isset($_POST['_method']) && ($method = strtoupper($_POST['method'])) && in_array($method,$this->aviableMethods)) ? $method : $_SERVER['REQUEST_METHOD'];
+		if(isset($_POST['_method']) && ($method = strtoupper($_POST['method'])) && in_array($method,$this->aviableMethods))
+			return $method;
+
+		if(isset($_SERVER['REQUEST_METHOD']))
+			return $_SERVER['REQUEST_METHOD'];
+
+		Throw new \Exception('Undefined method');
 	}
 
 	/**
