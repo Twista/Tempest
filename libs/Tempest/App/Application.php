@@ -20,8 +20,12 @@ class Application extends \Tempest\Object {
     }
 
     public function run() {
-        $router = $this->di->get('router');
-        $dispatcher = new \Tempest\MVC\Dispatcher($router->match(new \Tempest\Routing\Request()));
+        $router = $this->di->getShared('router');
+        $dispatcher = $this->di->getShared('dispatcher');
+        $request = $this->di->getShared('request');
+
+
+        $dispatcher->setRoute($router->match($request));
         $dispatcher->setInjectedDependencies($this->di)
             ->dispatch();
     }

@@ -22,9 +22,12 @@ class Dispatcher extends \Tempest\Object {
 	* constructor
 	* @param Route $route
 	*/
-	public function __construct(\Tempest\Routing\Route $route){
-		$this->route = $route;
+	public function __construct(){
 	}
+
+    public function setRoute(\Tempest\Routing\Route $route){
+        $this->route = $route;
+    }
 
     /**
      * set Dependenci container to inject via presenter factory

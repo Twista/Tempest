@@ -82,7 +82,7 @@ class Container {
     * @return Object
     */
     public function getShared($name){
-        if(!isClassRegistred($name))
+        if(!$this->isClassRegistred($name))
             throw new Exception('Service with ' . $name . ' isn\'t defined');
 
         if(!is_null($this->registry[$name]['instance']))
