@@ -64,12 +64,18 @@ class Dispatcher extends \Tempest\Object {
         $class = array_shift($targetRoute);
         $method = array_shift($targetRoute);
         $obj = new $class();
-        if($obj instanceof \Tempest\MVC\Presenter)
-               $obj->injectDI($this->di);
+        if($obj instanceof \Tempest\MVC\Presenter){
+            $obj->injectDI($this->di);
+        }
+
+        if(method_exists($obj, 'beforeRender'))
+            $obj->beforeRender();
 
         $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
-        return call_user_func_array(array($obj, $method), $params);
+        call_user_func_array(array($obj, $method), $params);
 
+        if(method_exists($obj, 'afterRender'))
+            $obj->afterRender();
     }
 
 	/**

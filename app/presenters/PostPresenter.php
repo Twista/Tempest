@@ -3,7 +3,15 @@
 class PostPresenter extends \Tempest\MVC\Presenter {
 
 	public function __contruct(){
+		parent::__construct();
+	}
 
+	public function beforeRender(){
+		echo '<h2>beforeRender called</h2>';
+	}
+
+	public function afterRender(){
+		echo '<h2>afterRender called</h2>';
 	}
 
 	public function showAll(){
