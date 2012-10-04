@@ -1,0 +1,4 @@
+<div style="border 1px #000 solid;">
+	<strong>Hello, i'm tempalte</strong>
+	<p>this is template for post {$id}</p>
+</div>

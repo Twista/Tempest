@@ -10,7 +10,7 @@
 
 namespace Tempest\Templating;
 
-class Template extends \Tempest\PropertyAccess {
+class Template {
 
 	/** @var string */
     private $template;

@@ -69,30 +69,42 @@ class Dispatcher extends \Tempest\Object {
         $class_name = $class.'Presenter';
         $method_name = $method.'Action';
 
-
         if(!class_exists($class_name))
             throw new \Exception("Class {$class_name}Presenter doesn't exists");
 
+        // create new presenter
         $obj = new $class_name();
+
+        $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
+
         if($obj instanceof \Tempest\MVC\Presenter){
             $obj->injectDI($this->di);
             $obj->initTemplate($class.DIRECTORY_SEPARATOR.$method.'.pht');
         }
 
+        if(method_exists($obj, 'onStartup'))
+            $obj->onStartup();
+
+         if(method_exists($obj, $method.'Event')){
+            call_user_func_array(array($obj, $method.'Event'), $params);
+        }
+
         if(method_exists($obj, 'beforeRender'))
             $obj->beforeRender();
 
-        $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
         if(!method_exists($obj, $method_name))
             throw new \Exception("Method {$class_name}::{$method_name} doesn't exists");
 
         call_user_func_array(array($obj, $method_name), $params);
 
         if(method_exists($obj, 'renderTemplate'))
-            $obj->renderTemplate();
+            $obj->renderTemplate(); // renders template file
 
         if(method_exists($obj, 'afterRender'))
             $obj->afterRender();
+
+        if(method_exists($obj, 'onTerminate'))
+            $obj->onTerminate();
     }
 
 	/**

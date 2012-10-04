@@ -12,8 +12,11 @@ namespace Tempest\MVC;
 
 abstract class Presenter {
 
-	/** @var string */
+	/** @var \Tempest\Templating\Template */
 	protected $template;
+
+	/** @var string */
+	protected $template_file;
 
 	/** @var \Tempest\DI */
 	protected $di;
@@ -27,13 +30,26 @@ abstract class Presenter {
 		echo '<h1>DI was injected</h1>';
 	}
 
+	/**
+	 * base init of template engine
+	 * @param string $template
+	 */
 	public function initTemplate($template){
-		$this->template = new \Tempest\Templating\Template(APP_DIR.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template);
+		$template_file = APP_DIR.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template;
+		if(is_readable($template_file)){
+			$this->template_file = $template_file;
+			$this->template = new \Tempest\Templating\Template($this->template_file);
+		} else {
+			$this->template_file = null;
+		}
 	}
 
+	/**
+	 * render template if is aviable
+	 */
 	public function renderTemplate(){
-		echo '<h3>render!</h3>';
-		$this->template->render();
+		if(!is_null($this->template_file))
+			$this->template->render();
 	}
 
 }
