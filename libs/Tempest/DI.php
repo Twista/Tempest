@@ -45,8 +45,12 @@ class DI {
 
         $class_name = $this->registry[$name]['class'];
 
-        if(is_object($class_name))
+        // return raw object
+        if(is_object($class_name)){
+            if(is_a($class_name,'Closure')) // closure have to be eval'd
+                return $class_name();
             return $class_name;
+        }
 
         if(!class_exists($class_name))
             throw new Exception("Class {$class_name} doesnt exists.");

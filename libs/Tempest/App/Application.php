@@ -21,7 +21,7 @@ class Application extends \Tempest\Object {
 
     public function run() {
         $router = $this->di->get('router');
-        $dispatcher = new \Tempest\Routing\Dispatcher($router()->match(new \Tempest\Routing\Request()));
+        $dispatcher = new \Tempest\Routing\Dispatcher($router->match(new \Tempest\Routing\Request()));
         $dispatcher->setInjectedDependencies($this->di)
             ->dispatch();
     }

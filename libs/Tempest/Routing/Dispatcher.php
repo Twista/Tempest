@@ -66,6 +66,7 @@ class Dispatcher extends \Tempest\Object {
         $obj = new $class();
         if($obj instanceof \Tempest\MVC\Presenter)
                $obj->injectDI($this->di);
+
         $params = is_null($this->route->getParams()) ? array() : array_values($this->route->getParams());
         return call_user_func_array(array($obj, $method), $params);
 
