@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Tempest Test Suite" tests="8" assertions="20" failures="0" errors="0" time="0.032794">
-    <testsuite name="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" tests="1" assertions="3" failures="0" errors="0" time="0.004184">
-      <testcase name="testGetSetServices" class="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" line="11" assertions="3" time="0.004184"/>
+  <testsuite name="Tempest Test Suite" tests="8" assertions="20" failures="0" errors="0" time="0.033847">
+    <testsuite name="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" tests="1" assertions="3" failures="0" errors="0" time="0.003598">
+      <testcase name="testGetSetServices" class="DITest" file="D:\Web\wwwmy\Tempest\tests\cases\DITest.php" line="11" assertions="3" time="0.003598"/>
     </testsuite>
-    <testsuite name="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.009414">
-      <testcase name="testHelloWorld" class="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" line="10" assertions="1" time="0.009414"/>
+    <testsuite name="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.008139">
+      <testcase name="testHelloWorld" class="ExampleTest" file="D:\Web\wwwmy\Tempest\tests\cases\ExampleTest.php" line="10" assertions="1" time="0.008139"/>
     </testsuite>
-    <testsuite name="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" tests="1" assertions="2" failures="0" errors="0" time="0.002914">
-      <testcase name="testSimple" class="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" line="5" assertions="2" time="0.002914"/>
+    <testsuite name="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" tests="1" assertions="2" failures="0" errors="0" time="0.003902">
+      <testcase name="testSimple" class="RequestTest" file="D:\Web\wwwmy\Tempest\tests\cases\RequestTest.php" line="5" assertions="2" time="0.003902"/>
     </testsuite>
-    <testsuite name="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" fullPackage="Tempest" package="Tempest" tests="2" assertions="7" failures="0" errors="0" time="0.005430">
-      <testcase name="testGettersSetters" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="18" assertions="2" time="0.002328"/>
-      <testcase name="testRegexp" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="28" assertions="5" time="0.003102"/>
+    <testsuite name="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" fullPackage="Tempest" package="Tempest" tests="2" assertions="7" failures="0" errors="0" time="0.005693">
+      <testcase name="testGettersSetters" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="18" assertions="2" time="0.002314"/>
+      <testcase name="testRegexp" class="RouteTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouteTest.php" line="28" assertions="5" time="0.003379"/>
     </testsuite>
-    <testsuite name="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" fullPackage="Tempest" package="Tempest" tests="3" assertions="7" failures="0" errors="0" time="0.010852">
-      <testcase name="testTypes" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="29" assertions="0" time="0.000439"/>
-      <testcase name="testMatches" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="33" assertions="6" time="0.007924"/>
-      <testcase name="testExceptions" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="64" assertions="1" time="0.002489"/>
+    <testsuite name="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" fullPackage="Tempest" package="Tempest" tests="3" assertions="7" failures="0" errors="0" time="0.012515">
+      <testcase name="testTypes" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="29" assertions="0" time="0.000448"/>
+      <testcase name="testMatches" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="33" assertions="6" time="0.009308"/>
+      <testcase name="testExceptions" class="RouterTest" file="D:\Web\wwwmy\Tempest\tests\cases\RouterTest.php" line="64" assertions="1" time="0.002759"/>
     </testsuite>
   </testsuite>
 </testsuites>
