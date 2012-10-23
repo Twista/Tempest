@@ -45,7 +45,7 @@ class Route extends \Tempest\Object {
 
     /**
     * set route url
-    * @todo remove BASE_PATH
+    * @todo remove BASE_PATH definition
     * @param string $url
     */
     public function setUrl($url) {
