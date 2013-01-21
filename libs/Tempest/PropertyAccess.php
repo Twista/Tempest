@@ -10,7 +10,7 @@
 
 namespace Tempest;
 
-abstract class PropertyAccess implements \ArrayAccess {
+class PropertyAccess implements \ArrayAccess {
 
 	public function offsetSet($offset, $value) {
     	if(isset($this->offset))
